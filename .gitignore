@@ -1,3 +1,24 @@
+# Latex auxiliar files
+*.toc
+*.gz
+*.lot
+*.log
+*.lof
+*.idx
+*.brf
+*.blg
+*.bbl
+*.aux
+*.nav
+*.out
+*.snm
+*.spl
+*.bst
+
+
+# Converted Images 
+*-eps-converted-to*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
