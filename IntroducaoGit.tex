@@ -142,8 +142,28 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{listings}     %used to write code
-\usepackage{color}
+\newcommand{\estiloJava}{
+	\lstset{
+		language=Java,
+		basicstyle=\ttfamily\small,
+		keywordstyle=\color{jpurple}\bfseries,
+		stringstyle=\color{red},
+		commentstyle=\color{verde},
+		morecomment=[s][\color{blue}]{/**}{*/},
+		extendedchars=true,
+		showspaces=false,
+		showstringspaces=false,
+		numbers=left,
+		numberstyle=\tiny,
+		breaklines=true,
+		backgroundcolor=\color{cyan!10},
+		breakautoindent=true,
+		captionpos=b,
+		xleftmargin=0pt,
+		tabsize=2
+	}}
 
+\usepackage{color}
 \usepackage[ruled,vlined]{algorithm2e}  %used to pseudo code - algorithms
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -178,8 +198,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title[Git]{Controle de Versão e Introdução ao Git}
-\author[Felipe]{Felipe Timóteo \\  Marco Cetale}
+\title[Git]{Controle de Versão e Introdução \includegraphics[height=0.35cm]{figures/gitlogo.png}}
+\author[Felipe]{Felipe Timóteo}
 \institute{GISIS \& DOT UFF }
 \date{\today}
 \logo{\pgfimage[height=1.5cm]{figures/0_logo.pdf}}
@@ -208,21 +228,136 @@
 \tableofcontents[current]
 \end{frame}
 
+\subsection{Motivação}
 % ----------------- NOVO SLIDE --------------------------------	
 \begin{frame}{Introdução}
-\framesubtitle{}
-\vfill	
-\begin{itemize}
-	\item[$ \bullet $] Resolução de problemas inversos com dados
+\framesubtitle{Motivação}
 
+\begin{itemize}
+	\item[$ \bullet $] Facilita a colaboração de pequenos ou grandes grupos
+	\item[$ \bullet $] Ajuda na organização do projeto de forma eficiente
+	\item[$ \bullet $] Documentação e histórico do desenvolvimento mais robusta
+	\item[$ \bullet $] Economia de tempo durante o desenvolvimento
+	\item[$ \bullet $] Facilita debug de programas complexos
+	\item[$ \bullet $] Muito popular entre os desenvolvedores de softwares
+	\item[$ \bullet $] Evita problemas comum aos desenvolvedores (ou escritores)
+	\item[$ \bullet $] Evita as várias versões diferentes durante a etapa de desenvolvimento
+	\item[$ \bullet $] Evita tarefas chatas e repetitivas
 \end{itemize}
+\end{frame}
+
+
+\subsection{Controle de versão}
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}{Introdução}
+\framesubtitle{Controle de versão | https://guides.github.com/introduction/git-handbook/}
+What’s a version control system?
+
+A version control system, or VCS, tracks the history of changes as people and teams collaborate on projects together. As the project evolves, teams can run tests, fix bugs, and contribute new code with the confidence that any version can be recovered at any time. Developers can review project history to find out:
+
+\begin{itemize}
+	\item[$ \bullet $] Which changes were made?
+	\item[$ \bullet $] Who made the changes?
+	\item[$ \bullet $] When were the changes made?
+	\item[$ \bullet $] Why were changes needed?
+\end{itemize}
+
+\end{frame}
+
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}{Introdução}
+\framesubtitle{Controle de versão | https://guides.github.com/introduction/git-handbook/}
+\small
+
+\begin{exampleblock}{What’s a distributed version control system?}
+	Git is an example of a distributed version control system (DVCS) commonly used for open source and commercial software development. DVCSs allow full access to every file, branch, and iteration of a project, and allows every user access to a full and self-contained history of all changes. Unlike once popular centralized version control systems, DVCSs like Git don’t need a constant connection to a central repository. Developers can work anywhere and collaborate asynchronously from any time zone
+\end{exampleblock}
+
+\begin{block}{}
+	Without version control, team members are subject to redundant tasks, slower timelines, and multiple copies of a single project. To eliminate unnecessary work, Git and other VCSs give each contributor a unified and consistent view of a project, surfacing work that’s already in progress. Seeing a transparent history of changes, who made them, and how they contribute to the development of a project helps team members stay aligned while working independently.
+\end{block}
+
+\end{frame}
+
+
+\subsection{git}
+
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}{Introdução}
+\framesubtitle{Why Git? | https://guides.github.com/introduction/git-handbook/}
+\small
+According to the latest Stack Overflow developer survey, more than 70 percent of developers use Git, making it the most-used VCS in the world. Git is commonly used for both open source and commercial software development, with significant benefits for individuals, teams and businesses.
+
+\begin{itemize}
+	\item[$ \bullet $] Git lets developers see the entire timeline of their changes, decisions, and progression of any project in one place. From the moment they access the history of a project, the developer has all the context they need to understand it and start contributing.
+	\item[$ \bullet $] Developers work in every time zone. With a DVCS like Git, collaboration can happen any time while maintaining source code integrity. Using branches, developers can safely propose changes to production code.
+	\item[$ \bullet $] Businesses using Git can break down communication barriers between teams and keep them focused on doing their best work. Plus, Git makes it possible to align experts across a business to collaborate on major projects.
+\end{itemize}
+
+\end{frame}
+
+\subsection{github \& gitlab}
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}{Introdução}
+\framesubtitle{github \& gitlab}
+
+\vfill
+\begin{columns}[t]
+	\begin{column}{.5\textwidth}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/Github_logo}
+\end{figure}
+	\end{column}
+	\begin{column}{.5\textwidth}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/GitLab_logo}
+\end{figure}
+	\end{column}
+\end{columns}
+\vfill
+
+\end{frame}
+
+\section{Git Flow}
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}{}
+	\tiny
+	\tableofcontents[current]
+\end{frame}
+
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}{Introdução}[]
+	\framesubtitle{}
+	\vfill	
+	\begin{block}{}
+		\$ git status
+	\end{block}
+	
+	\begin{exampleblock}{}
+		git log
+	\end{exampleblock}
+	
+	\begin{alertblock}{}
+		git log
+	\end{alertblock}
+	
 
 \end{frame}
 
 \section{References}
 % ----------------- NOVO SLIDE --------------------------------	
 \begin{frame}[allowframebreaks]{References}
-	\tiny
+	\begin{itemize}
+		
+		\item[$ \blacksquare $] https://guides.github.com/introduction/git-handbook/
+		\item[$ \blacksquare $] https://www.atlassian.com/git 		
+		\item[$ \blacksquare $] https://help.github.com/articles/github-glossary/		
+		\item[$ \blacksquare $] https://github.com/pbs-assess/git-course
+	\end{itemize}
+	
+	
 %	\bibliography{../references}
 \end{frame}
 
