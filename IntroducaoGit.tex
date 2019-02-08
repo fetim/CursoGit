@@ -4,6 +4,8 @@
 % LaTeX Template
 % Version 1.0 (10/11/12)
 %
+% Updated by Felipe Timóteo | felipetimote@id.uff.br
+% (28/01/2019) 
 % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
 %
@@ -109,6 +111,7 @@
 \usepackage{cancel}             % goes to zero 
 \usepackage{amsmath}            % usado para criar subequações
 
+\usepackage{hyperref}          % hyperlink
 \usefonttheme{professionalfonts}
 
 \useoutertheme{infolines}
@@ -178,8 +181,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title[Git]{Controle de Versão e Introdução ao Git}
-\author[Felipe]{Felipe Timóteo \\  Marco Cetale}
+\title[Git]{Controle de Versão utilizando o  Git}
+\author[Felipe]{Felipe Timóteo}
 \institute{GISIS \& DOT UFF }
 \date{\today}
 \logo{\pgfimage[height=1.5cm]{figures/0_logo.pdf}}
@@ -218,6 +221,46 @@
 \end{itemize}
 
 \end{frame}
+
+\section{Principais comandos}
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}{}
+	\tiny
+	\tableofcontents[current]
+\end{frame}
+
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}{Introdução}
+	\framesubtitle{}
+	\vfill	
+	\begin{block}{}
+		\$ git status
+	\end{block}
+	
+	\begin{exampleblock}{}
+		git log
+	\end{exampleblock}
+	
+	\begin{alertblock}{}
+		git log
+	\end{alertblock}
+	
+
+\end{frame}
+
+
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}{Introdução}
+\framesubtitle{}
+\vfill	
+
+\begin{itemize}
+	\item[$\bullet$] git remote add origin \textit{adress}
+	\item[$\bullet$] git remote add upstream \textit{adress}	
+\end{itemize}
+%	
+\end{frame}
+
 
 \section{References}
 % ----------------- NOVO SLIDE --------------------------------	
