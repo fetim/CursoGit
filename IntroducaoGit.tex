@@ -205,7 +205,7 @@
 \author[Felipe]{Felipe Timóteo}
 \institute{GISIS \& DOT UFF }
 \date{\today}
-\logo{\pgfimage[height=1.5cm]{figures/0_logo.pdf}}
+\logo{\pgfimage[height=1.0cm]{figures/0_logo.pdf}}
 \titlegraphic{\includegraphics[height=2.5cm]{figures/1_logo.pdf}}
 
 \begin{document}
@@ -336,10 +336,11 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 	\tableofcontents[current]
 \end{frame}
 
+\subsection{Configurando o git}
 % ----------------- NOVO SLIDE --------------------------------	
-\begin{frame}[fragile]{Git Flow}
+\begin{frame}[fragile]{Git Workflow}
 	\framesubtitle{Preparando o ambiente pela 1ª vez}
-	Essa configurações irão valer para todos os seus repositórios locais
+
 	\begin{block}{Defina o user name}		
 		\begin{verbatim}
 			$ git config --global user.name "[nome]"
@@ -364,16 +365,18 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 		\end{verbatim}
 \end{exampleblock}
 
+{\footnotesize *	Essa configurações irão valer para todos os seus repositórios locais}
 \end{frame}
 
+\subsection{Criando repositório}
 % ----------------- NOVO SLIDE --------------------------------	
-\begin{frame}[fragile]{Git Flow}
+\begin{frame}[fragile]{Git Workflow}
 \framesubtitle{Criando o repositório}
 
 \begin{columns}[t]
 	
 	\begin{column}{.7\textwidth}
-		\vspace{0.3 cm}
+		\vspace{0.1 cm}
 		\begin{block}{Cria um novo repositório}		
 			\begin{verbatim}
 			$ git init
@@ -385,7 +388,7 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 			$ git clone [url]
 			\end{verbatim}
 		\end{alertblock}
-		
+		\vspace{0.4 cm}
 		\begin{alertblock}{Sincroniza com um repositório existente}		
 			\begin{verbatim}
 			$ git add remote origin [url]
@@ -398,7 +401,7 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 	\begin{column}{.2\textwidth}
 		\begin{figure}
 			\centering			
-			\includegraphics[width=0.6\linewidth]{figures/gitsync}
+			\includegraphics[width=0.4\linewidth]{figures/gitcreate}
 		\end{figure}	
 		\begin{figure}
 			\centering			
@@ -413,30 +416,101 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 
 \end{frame}
 
+\subsection{Fazendo alterações}
 % ----------------- NOVO SLIDE --------------------------------	
-\begin{frame}{Introdução}
-\framesubtitle{}
-\vfill	
+\begin{frame}[fragile]{Git Workflow}
+\framesubtitle{Fazendo alterações}
+	\begin{block}{Lista os arquivo novos ou modificados}		
+		\begin{verbatim}
+		$ git status
+		\end{verbatim}
+	\end{block}			
 
-\begin{itemize}
-	\item[$\bullet$] git remote add origin \textit{adress}
-	\item[$\bullet$] git remote add upstream \textit{adress}	
-\end{itemize}
-%	
+	\begin{block}{Prepara o arquivo para o versionamento | staging area}		
+		\begin{verbatim}
+		$ git add [nome do arquivo]
+		\end{verbatim}
+	\end{block}
+	
+	\begin{block}{Mostra a diferença entre os arquivos}		
+		\begin{verbatim}
+		$ git diff ou $ git diff --staged		
+		\end{verbatim}
+	\end{block}		
+
+		\begin{block}{Grava modificações no histórico de versão}		
+		\begin{verbatim}
+		$ git commit -m "[mensagem descritiva]"
+		\end{verbatim}
+	\end{block}		
+			
 \end{frame}
+
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}[fragile]{Git Workflow}
+\framesubtitle{Fazendo alterações | Entendendo as áreas de trabalho}
+
+	\begin{figure}
+		\centering			
+		\includegraphics[width=0.6\linewidth]{figures/treesv2}
+\end{figure}	
+	\begin{itemize}		
+		\small
+	\item[$\checkmark$] Seus repositórios locais consistem em três "árvores" mantidas pelo git. 
+	\item[$\checkmark$] Working Directory - contém os arquivos vigentes.
+	\item[$\checkmark$] Index (Stage) - funciona como uma área temporária
+	\item[$\checkmark$] HEAD - aponta para o último commit (confirmação) que você fez. 
+\end{itemize}
+
+\end{frame}
+
+
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}[fragile]{Git Workflow}
+\framesubtitle{Branches | Ramificações}
+	\begin{figure}
+		\centering			
+		\includegraphics[width=0.6\linewidth]{figures/branchesv2}
+	\end{figure}
+
+	\begin{block}{Lista todos os branches locais}		
+		\begin{verbatim}
+			$ git branch
+		\end{verbatim}
+	\end{block}			
+
+	\begin{block}{Cria um novo branch}		
+		\begin{verbatim}
+			$ git branch [nome-do-branch]
+		\end{verbatim}
+	\end{block}			
+
+	\begin{block}{Muda para o branch específico e atualiza o diretório}		
+		\begin{verbatim}
+			$ git checkout [nome-do-branch]
+		\end{verbatim}
+	\end{block}			
+
+	\begin{block}{Combina o histórico do branch especifíco com o atual}		
+		\begin{verbatim}
+			$ git merge [nome-do-branch]
+		\end{verbatim}
+	\end{block}			
+
+	\end{frame}
 
 \section{References}
 % ----------------- NOVO SLIDE --------------------------------	
-\begin{frame}[allowframebreaks]{References}
-	\begin{itemize}
-		
-	\item[$ \blacksquare $] \href{https://guides.github.com/introduction/git-handbook/}{\color{blue}Git hub handbook}
-	\item[$ \blacksquare $] \href{https://help.github.com/articles/github-glossary/}{\color{blue} Git hub glossary}
-	\item[$ \blacksquare $] \href{https://github.com/pbs-assess/git-course}{\color{blue} GitHub by Chris Grandin and Andrew Edwards}
-	\item[$ \blacksquare $] \href{https://try.github.io/}{\color{blue} Resources to learn Git}
-	\item[$ \blacksquare $] \href{https://www.atlassian.com/git}{\color{blue} Atlassian} 			
+\begin{frame}{Referencias}
+
+	\begin{itemize}		
+	\item[$\blacksquare$] \href{https://guides.github.com/introduction/git-handbook/}{\color{blue}Git hub handbook}
+	\item[$\blacksquare$] \href{https://help.github.com/articles/github-glossary/}{\color{blue} Git hub glossary}
+	\item[$\blacksquare$] \href{https://github.com/pbs-assess/git-course}{\color{blue} GitHub by Chris Grandin and Andrew Edwards}
+	\item[$\blacksquare$] \href{https://try.github.io/}{\color{blue} Resources to learn Git}
+	\item[$\blacksquare$] \href{https://www.atlassian.com/git}{\color{blue} Atlassian} 			
+	\item[$\blacksquare$]  \href{http://rogerdudler.github.io/git-guide/index.pt_BR.html}{\color{blue} git - guia prático} 			
 	\end{itemize}
-	
 	
 %	\bibliography{../references}
 \end{frame}
