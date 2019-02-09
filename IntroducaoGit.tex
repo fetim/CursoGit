@@ -202,8 +202,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[Git]{Controle de Versão e Introdução \includegraphics[height=0.35cm]{figures/gitlogo.png}}
 
-\author[Felipe]{Felipe Timóteo}
-\institute{GISIS \& DOT UFF }
+\author[@fetim]{Felipe Timóteo}
+\institute{GISIS \& DOT-UFF }
 \date{\today}
 \logo{\pgfimage[height=1.0cm]{figures/0_logo.pdf}}
 \titlegraphic{\includegraphics[height=2.5cm]{figures/1_logo.pdf}}
@@ -235,17 +235,18 @@
 % ----------------- NOVO SLIDE --------------------------------	
 \begin{frame}{Introdução}
 \framesubtitle{Motivação}
+\setbeamercovered{transparent}
 
-\begin{itemize}
-	\item[$ \bullet $] Facilita a colaboração de pequenos ou grandes grupos
-	\item[$ \bullet $] Ajuda na organização do projeto de forma eficiente
-	\item[$ \bullet $] Documentação e histórico do desenvolvimento mais robusta
-	\item[$ \bullet $] Economia de tempo durante o desenvolvimento
-	\item[$ \bullet $] Facilita debug de programas complexos
-	\item[$ \bullet $] Muito popular entre os desenvolvedores de softwares
-	\item[$ \bullet $] Evita problemas comum aos desenvolvedores (ou escritores)
-	\item[$ \bullet $] Evita as várias versões diferentes durante a etapa de desenvolvimento
-	\item[$ \bullet $] Evita tarefas chatas e repetitivas
+\begin{itemize}[<+->]
+	\item[$ \checkmark $] Ajuda na organização do projeto de forma eficiente
+	\item[$ \checkmark $] Documentação e histórico do desenvolvimento mais robusta
+	\item[$ \checkmark $] Facilita a colaboração de pequenos ou grandes grupos
+	\item[$ \checkmark $] Economia de tempo durante o desenvolvimento
+	\item[$ \checkmark $] Facilita debug de programas complexos
+	\item[$ \checkmark $] Muito popular entre os desenvolvedores de softwares
+	\item[$ \checkmark $] Evita problemas comum aos desenvolvedores (ou escritores)
+	\item[$ \checkmark $] Evita as várias versões diferentes durante a etapa de desenvolvimento
+	\item[$ \checkmark $] Evita tarefas chatas e repetitivas
 \end{itemize}
 \end{frame}
 
@@ -328,7 +329,7 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 
 \end{frame}
 
-\section{Git Flow}
+\section{Git Workflow Básico}
 
 % ----------------- NOVO SLIDE --------------------------------	
 \begin{frame}{}
@@ -365,7 +366,7 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 		\end{verbatim}
 \end{exampleblock}
 
-{\footnotesize *	Essa configurações irão valer para todos os seus repositórios locais}
+{\footnotesize $ \star $ Essa configurações irão valer para todos os seus repositórios locais}
 \end{frame}
 
 \subsection{Criando repositório}
@@ -391,7 +392,7 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 		\vspace{0.4 cm}
 		\begin{alertblock}{Sincroniza com um repositório existente}		
 			\begin{verbatim}
-			$ git add remote origin [url]
+			$ git remote add origin [url]
 			$ git pull 
 			\end{verbatim}
 		\end{alertblock}
@@ -426,7 +427,7 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 		\end{verbatim}
 	\end{block}			
 
-	\begin{block}{Prepara o arquivo para o versionamento | staging area}		
+	\begin{block}{Prepara o arquivo para o versionamento | \textit{staging area}}		
 		\begin{verbatim}
 		$ git add [nome do arquivo]
 		\end{verbatim}
@@ -438,12 +439,17 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 		\end{verbatim}
 	\end{block}		
 
-		\begin{block}{Grava modificações no histórico de versão}		
+	\begin{block}{Grava modificações no histórico de versão}		
 		\begin{verbatim}
 		$ git commit -m "[mensagem descritiva]"
 		\end{verbatim}
 	\end{block}		
-			
+
+	\begin{block}{Verifique o histórico de versões}		
+		\begin{verbatim}
+		$ git log
+		\end{verbatim}
+	\end{block}					
 \end{frame}
 
 % ----------------- NOVO SLIDE --------------------------------	
@@ -453,55 +459,255 @@ According to the latest Stack Overflow developer survey, more than 70 percent of
 	\begin{figure}
 		\centering			
 		\includegraphics[width=0.6\linewidth]{figures/treesv2}
-\end{figure}	
+	\end{figure}	
+	
 	\begin{itemize}		
 		\small
-	\item[$\checkmark$] Seus repositórios locais consistem em três "árvores" mantidas pelo git. 
-	\item[$\checkmark$] Working Directory - contém os arquivos vigentes.
-	\item[$\checkmark$] Index (Stage) - funciona como uma área temporária
-	\item[$\checkmark$] HEAD - aponta para o último commit (confirmação) que você fez. 
-\end{itemize}
+		\item[$\checkmark$] Seus repositórios locais consistem em três "árvores" mantidas pelo git. 
+		\item[$\checkmark$] Working Directory - contém os arquivos vigentes.
+		\item[$\checkmark$] Index (Stage) - funciona como uma área temporária
+		\item[$\checkmark$] HEAD - aponta para o último commit (confirmação) que você fez. 
+	\end{itemize}
+
+\end{frame}
+
+\subsection{Exemplo - primeiros passos}
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}[fragile]{Git Workflow}
+\framesubtitle{Exemplo prático | Primeiros passos com git}
+
+	\begin{enumerate}
+		\item crie um novo diretório e prepare [ou clone] o repositório
+		\begin{verbatim}
+			$ git init
+		\end{verbatim}
+		
+		\item adicione [ou modifique] os arquivos de trabalho		
+		
+		\item verifique os arquivos alterados		
+		\begin{verbatim}
+			$ git status 
+		\end{verbatim}
+		
+		\item adicione os arquivos desejados a \textit{staging area} 
+		\begin{verbatim}
+			$ git add
+		\end{verbatim}
+		
+		\begin{itemize}
+			\item + alterações? | verifique  |  \textit{staging area}
+			\begin{verbatim}
+				$ git status | $ git diff | $ git add
+			\end{verbatim}
+		\end{itemize}
+	
+		\item grave as modificações no histórico de versão
+		\begin{verbatim}
+			$ git commit -m "[mensagem descritiva]"
+		\end{verbatim}
+		
+		\item verifique o histórico de versões
+		\begin{verbatim}
+		$ git log"
+		\end{verbatim}
+	\end{enumerate}
+
+\end{frame}
+
+
+\subsection{Colaborando e Sincronizando}
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}[fragile]{Git Workflow}
+\framesubtitle{Colaborando e Sincronizando  | Criando as contas no github e gitlab}
+
+\vfill
+\begin{columns}[t]
+	\begin{column}{.5\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{figures/Github_logo}
+			\caption*{	\href{https://github.com/}{\color{blue}Github}}
+		\end{figure}
+	\end{column}
+	\begin{column}{.5\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{figures/GitLab_logo}
+			\caption*{\href{https://gitlab.com/}{\color{blue}Gitlab}}
+		\end{figure}		
+	\end{column}
+\end{columns}
+\vfill
+\begin{exampleblock}{Após criar a conta...}
+ crie um novo repositório
+\end{exampleblock}
+\vfill
+\end{frame}
+
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}[fragile]{Git Workflow}
+\framesubtitle{Colaborando e Sincronizando  | Configurando o caminho }
+
+\begin{figure}
+	\centering			
+	\includegraphics[width=0.2\linewidth]{figures/gitsync}
+\end{figure}
+
+\begin{block}{Define o caminho até um repositório na nuvem}		
+	\begin{verbatim}
+	$ git remote add <origin> [url]
+	\end{verbatim}
+\end{block}
+
+\begin{block}{verifique o caminho}		
+	\begin{verbatim}	
+	$ git remote -v 
+	\end{verbatim}
+\end{block}
 
 \end{frame}
 
 
 % ----------------- NOVO SLIDE --------------------------------	
 \begin{frame}[fragile]{Git Workflow}
-\framesubtitle{Branches | Ramificações}
-	\begin{figure}
-		\centering			
-		\includegraphics[width=0.6\linewidth]{figures/branchesv2}
-	\end{figure}
+\framesubtitle{Colaborando e Sincronizando  | repo nuvem = repo local }
 
-	\begin{block}{Lista todos os branches locais}		
-		\begin{verbatim}
-			$ git branch
-		\end{verbatim}
-	\end{block}			
+\begin{figure}
+	\centering			
+	\includegraphics[width=0.2\linewidth]{figures/gitclone}
+\end{figure}
 
-	\begin{block}{Cria um novo branch}		
-		\begin{verbatim}
-			$ git branch [nome-do-branch]
-		\end{verbatim}
-	\end{block}			
+\begin{block}{Sincronize o histórico de versão na nuvem com o repositório local}		
+	\begin{verbatim}
+	$ git fetch <origin>
+	\end{verbatim}
+\end{block}			
 
-	\begin{block}{Muda para o branch específico e atualiza o diretório}		
-		\begin{verbatim}
-			$ git checkout [nome-do-branch]
-		\end{verbatim}
-	\end{block}			
+\begin{block}{Verifique o histórico de versão sincronizado}		
+	\begin{verbatim}	
+	$ git log <origin>/master
+	\end{verbatim}
+\end{block}
 
-	\begin{block}{Combina o histórico do branch especifíco com o atual}		
-		\begin{verbatim}
-			$ git merge [nome-do-branch]
-		\end{verbatim}
-	\end{block}			
+\begin{block}{Combine os repositórios}		
+	\begin{verbatim}	
+	$ git merge <origin>/master
+	\end{verbatim}
+\end{block}
 
-	\end{frame}
+\end{frame}
 
-\section{References}
+
 % ----------------- NOVO SLIDE --------------------------------	
-\begin{frame}{Referencias}
+\begin{frame}[fragile]{Git Workflow}
+\framesubtitle{Colaborando e Sincronizando  | repo nuvem = repo local }
+\begin{figure}
+	\centering			
+	\includegraphics[width=0.2\linewidth]{figures/gitclone}
+\end{figure}
+
+\begin{exampleblock}{Sincronização e combinação de uma vez}
+	\begin{verbatim}
+		$ git pull <origin>
+	\end{verbatim}
+\end{exampleblock}
+{\tiny$ \star $Se tiver certeza que a sincronização e combinação pode ser feita, agilize o processo com esse comando único}
+
+\begin{block}{Sincronize o histórico de versão local com o repositório na nuvem}		
+	\begin{verbatim}
+	$ git push <origin> master
+	\end{verbatim}
+\end{block}			
+
+
+\end{frame}
+
+\subsection{Exemplo - primeiros passos}
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}[fragile]{Git Workflow}
+\framesubtitle{Exemplo prático | Sincronizando com a nuvem}
+
+\begin{enumerate}
+	\item Adicione o caminho do repositório na nuvem e confirme o caminho
+	\begin{verbatim}
+	$ git remote add <origin> [url]
+	$ git remote -v
+	\end{verbatim}
+	
+	\item Sincronize o repositório da nuvem com o repositório local
+	\begin{verbatim}
+		$ git fetch <origin>
+		$ git log <origin>/master
+		$ git merge <origin>/master
+	\end{verbatim}
+	ou 
+	\begin{verbatim}
+		$ git pull <origin>
+	\end{verbatim}
+	\item verifique os arquivos alterados		
+	\begin{verbatim}
+	$ git status 
+	\end{verbatim}
+	
+	\item Faça alterações no seu repositório local
+	\item grave as modificações no histórico de versão e verifique
+	\item Sincronize o histórico de versão local com o repositório na nuvem
+	
+\end{enumerate}
+
+\end{frame}
+
+\section{Git Workflow Avançado [não finalizado]}
+
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}{}
+\tiny
+\tableofcontents[current]
+\end{frame}
+
+\subsection{Branches}
+%% ----------------- NOVO SLIDE --------------------------------	
+%\begin{frame}[fragile]{Git Workflow}
+%\framesubtitle{Branches | Ramificações}
+%	\begin{figure}
+%		\centering			
+%		\includegraphics[width=0.4\linewidth]{figures/branchesv2}
+%	\end{figure}
+%
+%	\begin{block}{Lista todos os branches locais}		
+%		\begin{verbatim}
+%			$ git branch
+%		\end{verbatim}
+%	\end{block}			
+%
+%	\begin{block}{Cria um novo branch}		
+%		\begin{verbatim}
+%			$ git branch [nome-do-branch]
+%		\end{verbatim}
+%	\end{block}			
+%
+%	\begin{block}{Muda para o branch específico e atualiza o diretório}		
+%		\begin{verbatim}
+%			$ git checkout [nome-do-branch]
+%		\end{verbatim}
+%	\end{block}			
+%
+%	\begin{block}{Combina o histórico do branch especifíco com o atual}		
+%		\begin{verbatim}
+%			$ git merge [nome-do-branch]
+%		\end{verbatim}
+%	\end{block}			
+%
+%\end{frame}
+
+\subsection{Fork}
+
+\subsection{Trabalhando em equipe}
+
+
+\section{Links uteis e referências}
+% ----------------- NOVO SLIDE --------------------------------	
+\begin{frame}{Links úteis e referências}
 
 	\begin{itemize}		
 	\item[$\blacksquare$] \href{https://guides.github.com/introduction/git-handbook/}{\color{blue}Git hub handbook}
